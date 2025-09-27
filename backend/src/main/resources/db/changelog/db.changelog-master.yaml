@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: init-schema
+      author: talent-match
+      changes:
+        - createTable:
+            tableName: talent_match_init
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+        - insert:
+            tableName: talent_match_init
+            columns:
+              - column:
+                  name: created_at
+                  valueComputed: CURRENT_TIMESTAMP
