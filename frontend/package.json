@@ -12,7 +12,10 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write . && eslint . --fix",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",

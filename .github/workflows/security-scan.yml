@@ -1,0 +1,64 @@
+name: Security Scan
+
+on:
+    push:
+        branches: [main, develop]
+    pull_request:
+        branches: [main, develop]
+    schedule:
+        # Run weekly security scan on Sundays at 2 AM UTC
+        - cron: '0 2 * * 0'
+
+jobs:
+    security-scan:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            # Backend security scan
+            - name: Set up JDK 21 for backend
+              uses: actions/setup-java@v4
+              with:
+                  java-version: '21'
+                  distribution: 'temurin'
+
+            - name: Cache Maven dependencies
+              uses: actions/cache@v4
+              with:
+                  path: ~/.m2
+                  key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+                  restore-keys: ${{ runner.os }}-m2
+
+            - name: Run OWASP Dependency Check for backend
+              run: |
+                  cd backend
+                  ./mvnw org.owasp:dependency-check-maven:check
+
+            # Frontend security scan
+            - name: Set up Node.js for frontend
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+                  cache: 'npm'
+                  cache-dependency-path: 'frontend/package-lock.json'
+
+            - name: Install frontend dependencies
+              run: |
+                  cd frontend
+                  npm ci
+
+            - name: Run npm audit for frontend
+              run: |
+                  cd frontend
+                  npm audit --audit-level high
+
+            - name: Upload security reports
+              uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: security-reports
+                  path: |
+                      backend/target/dependency-check-report.html
+                      frontend/npm-audit.json
