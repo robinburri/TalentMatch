@@ -1,0 +1,43 @@
+# Build outputs
+
+dist/
+build/
+coverage/
+
+# Dependencies
+
+node_modules/
+
+# Package files
+
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment files
+
+.env\*
+
+# IDE files
+
+.vscode/
+.idea/
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# Logs
+
+\*.log
+
+# Generated files
+
+\*.tsbuildinfo
+
+# Static assets (optional - remove if you want to format these)
+
+public/
+_.min.js
+_.min.css
