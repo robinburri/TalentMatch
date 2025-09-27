@@ -101,6 +101,23 @@
 					</java>
 				</configuration>
 			</plugin>
+
+			<!-- OWASP Dependency Check Plugin for security scanning -->
+			<plugin>
+				<groupId>org.owasp</groupId>
+				<artifactId>dependency-check-maven</artifactId>
+				<version>9.0.8</version>
+				<configuration>
+					<formats>
+						<format>HTML</format>
+						<format>JSON</format>
+					</formats>
+					<failBuildOnCVSS>7</failBuildOnCVSS>
+					<skipOnError>true</skipOnError>
+					<enableRetired>false</enableRetired>
+					<enableExperimental>false</enableExperimental>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

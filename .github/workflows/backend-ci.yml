@@ -48,9 +48,6 @@ jobs:
                   key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
                   restore-keys: ${{ runner.os }}-m2
 
-            - name: Change to backend directory
-              run: cd backend
-
             - name: Check code formatting with Spotless
               run: |
                   cd backend
