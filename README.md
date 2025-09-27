@@ -67,19 +67,6 @@ This project is developed as a **portfolio capstone** to demonstrate skills as a
 
 ---
 
-## 🏗 Milestones
-
-1. **Milestone 0**: Project setup, README, LICENSE (current step)
-2. **Milestone 1**: Backend MVP (Spring Boot + Postgres + Liquibase + Auth)
-3. **Milestone 2**: Frontend MVP (React + Redux Toolkit + Tailwind + MUI)
-4. **Milestone 3**: Docker Compose local dev setup
-5. **Milestone 4**: Core features (resume parsing, recommendations)
-6. **Milestone 5**: Microservices + Kafka integration
-7. **Milestone 6**: AI features
-8. **Milestone 7**: Kubernetes deployment + CI/CD
-
----
-
 ## 🚀 Running the Project
 
 ### (future setup, placeholder)
